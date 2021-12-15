@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from 'next/head';
+import styles from '../styles/Home.module.css';
 
 export async function getServerSideProps() {
   const cookie = `session=${process.env.COOKIE}`;
@@ -28,5 +28,5 @@ export default function Home({ data }) {
         ))}
       </ul>
     </div>
-  )
+  );
 }
