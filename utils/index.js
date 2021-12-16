@@ -1,6 +1,8 @@
+import transliterate from '@sindresorhus/transliterate';
+
 import settings from '../settings';
 
 export const getUserDisplayName = (memberId, members) =>
   settings.private === false || settings.publicUsers.includes(Number(memberId))
-    ? members[memberId].name
+    ? transliterate(members[memberId].name)
     : memberId;
