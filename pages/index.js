@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+import LocalScoreRankByDay from '../components/LocalScoreRankByDay';
 
 export async function getServerSideProps() {
   const cookie = `session=${process.env.COOKIE}`;
@@ -15,18 +16,14 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ data }) {
+  const { members } = data;
   return (
     <div className={styles.container}>
       <Head>
         <title>Advent of Code Analytics</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <ul>
-        {Object.entries(data.members).map(([userId]) => (
-          <li key={userId}>{userId}</li>
-        ))}
-      </ul>
+      <LocalScoreRankByDay members={members} />
     </div>
   );
 }
